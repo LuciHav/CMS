@@ -1,11 +1,5 @@
-# Ignore node_modules in both backend and frontend directories
-backend/node_modules/
-frontend/node_modules/
+# Ignore node_modules in both backend and frontend
+node_modules/
 
-# Ignore environment files
-backend/.env/
-frontend/.env/
-
-# Ignore logs and temporary files
-*.log
-*.tmp
+# Ignore .env file in the backend folder
+backend/.env

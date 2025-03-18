@@ -221,8 +221,6 @@ export const verifyEmail = async (req, res) => {
   }
 };
 // The function can be used as middleware or in a route handler to check authentication
-
-
 export const isauthenticated = async (req, res, next) => {
   try {
     const { userId } = req.cookies; // Assuming you're storing the userId in the cookies
@@ -236,7 +234,7 @@ export const isauthenticated = async (req, res, next) => {
     }
 
     // Fetch the user from the database based on userId from cookies
-    const user = await user.findById(userId);
+    const user = await User.findById(userId);
 
     // Check if user exists and if isVerified is true
     if (user && user.isVerified) {

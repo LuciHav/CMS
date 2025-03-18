@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 
 import connectDB from "./config/mongodb.js";
 import authRoutes from './routes/authroutes.js';
+import userRouter from "./routes/userRoutes.js";
 
 
 const app = express();
@@ -24,7 +25,9 @@ app.get("/", (req, res) => {
 });
 
 // Use the auth routes
-app.use('/api/auth', authRoutes);  // Uncommented the auth routes
+app.use('/api/auth', authRoutes); 
+app.use('/api/user', userRouter); 
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

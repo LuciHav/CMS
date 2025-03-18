@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
   },
   otpExpiresAt: {
     type: Date,
-    default: Date.now, // Default to current time (won't expire immediately)
+    default: () => Date.now() + 15 * 60 * 1000, // Set OTP expiry to 15 minutes from now
   },
   isVerified: {
     type: Boolean,
@@ -29,10 +29,10 @@ const userSchema = new mongoose.Schema({
   },
   resetOtpExpiresAt: {
     type: Date,
-    default: Date.now, // Default to current time (won't expire immediately)
+    default: () => Date.now() + 15 * 60 * 1000, // Set reset OTP expiry to 15 minutes from now
   },
 });
 
-const UserModel = mongoose.model("user", userSchema);
+const UserModel = mongoose.models.user || mongoose.model("user", userSchema);
 
 export default UserModel;
